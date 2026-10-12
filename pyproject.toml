@@ -13,3 +13,5 @@ license-files = ["LICENSE"]
 authors = [{ name = "Dawn"}]
 dependencies = ["PILLOW", "PYside6"]
 
+[project.optional-dependencies]
+dev = ["pytest", "flake8"]
