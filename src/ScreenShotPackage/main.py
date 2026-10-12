@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QApplication
 
-from src.ScreenShotPackage.image_canvas import ImageCanvas
-from src.ScreenShotPackage.screen_shot import grab
+from ScreenShotPackage.image_canvas import ImageCanvas
+from ScreenShotPackage.screen_shot import grab
 
 def main():
     app = QApplication([])
