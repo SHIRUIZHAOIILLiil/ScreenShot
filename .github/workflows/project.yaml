@@ -28,7 +28,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: run flake 8
         run: |
-          python -m pip install -upgrade pip
+          python -m pip install --upgrade pip
           pip install -e ".[dev]"
           python -m flake8
 
@@ -46,6 +46,6 @@ jobs:
           python-version: "3.14"
       - name: run pytest
         run: |
-          python -m pip install -upgrade pip
+          python -m pip install --upgrade pip
           pip install -e ".[dev]"
           python -m pytest
