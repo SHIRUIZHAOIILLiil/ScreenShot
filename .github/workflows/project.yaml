@@ -1,0 +1,47 @@
+name: ScreenShot
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  flake8:
+    name: Lint with flake8
+    runs-on: {{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: [3.11, 3.12, 3.13, 3.14]
+
+    steps:
+      - name: checkout
+      - uses: actions/checkout@v7
+
+      - name: Set up Python ${{ matrix.python-version}}
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+        run: |
+          python -m pip install -upgrade pip
+          pip install -e ".[dev]"
+          python -m flake8
+
+  tests:
+    name: Test by PYtest
+    runs-on: macos-latest
+
+    steps:
+      - name: checkout
+      - uses: actions/checkout@v7
+
+      - name: Set up Python 3.14
+      - uses: actions/setup-python@v7
+        run: |
+          python -m pip install -upgrade pip
+          pip install -e ".[dev]"
+          python -m pytest
